@@ -21,6 +21,8 @@ func main() {
       badArgs = append(badArgs, arg)
     }
 	}
-  log.Printf("invalid args: %v", badArgs)
+  if len(badArgs) > 1 {
+    log.Printf("invalid args: %v", badArgs)
+  }
 	fmt.Println(sum)
 }
