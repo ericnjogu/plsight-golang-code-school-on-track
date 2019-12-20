@@ -1,5 +1,10 @@
 package main
 
+import (
+  "time"
+  "fmt"
+)
+
 func Greet(hour24 int) string {
   switch {
   case hour24 < 12:
@@ -12,5 +17,5 @@ func Greet(hour24 int) string {
 }
 
 func main() {
-
+  fmt.Println(Greet(time.Now().Hour()))
 }
