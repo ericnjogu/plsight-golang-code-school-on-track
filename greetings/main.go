@@ -17,5 +17,9 @@ func Greet(hour24 int) string {
 }
 
 func main() {
-  fmt.Println(Greet(time.Now().Hour()))
+  hour24 := time.Now().Hour()
+  if hour24 < 10 {
+    panic("It's too early")
+  }
+  fmt.Println(Greet(hour24))
 }
