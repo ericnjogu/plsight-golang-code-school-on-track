@@ -3,14 +3,16 @@ package main
 import (
   "time"
   "fmt"
+  "errors"
+  "os"
 )
 
-func Greet(hour24 int) (string, string) {
+func Greet(hour24 int) (string, error) {
   var greeting string
-  var error string
+  var error error
   switch {
   case hour24 < 7:
-    error = "It's too early"
+    error = errors.New("It's too early")
   case hour24 < 12:
     greeting = "Good Morning"
   case hour24 >= 12 && hour24 <  18:
@@ -27,6 +29,7 @@ func main() {
   if len(greeting) > 0 {
       fmt.Println(greeting)
   } else {
-    panic(error)
+    fmt.Println(error)
+    os.Exit(1)
   }
 }

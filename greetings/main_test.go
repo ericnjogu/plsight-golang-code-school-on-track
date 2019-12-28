@@ -11,7 +11,7 @@ func TestGreetWithinTime(t *testing.T) {
 
   for hour24, expectedGreeting := range cases {
     actualGreeting, error := Greet(hour24)
-    if len(error) > 0 {
+    if error != nil {
       t.Errorf("There should be no error within time")
     }
     if actualGreeting != expectedGreeting {
@@ -22,10 +22,13 @@ func TestGreetWithinTime(t *testing.T) {
 
 func TestGreetOutsideTime(t *testing.T) {
   actualGreeting, error := Greet(3)
-  if len(error) == 0 {
+  if error == nil {
     t.Errorf("There should be an error outside time")
   }
-  if len(actualGreeting) > 0 {
+  if error.Error() != "It's too early" {
+    t.Errorf("The error message differs")
+  }
+  if actualGreeting != "" {
     t.Errorf("There should be no greeting")
   }
 }
