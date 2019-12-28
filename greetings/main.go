@@ -5,21 +5,28 @@ import (
   "fmt"
 )
 
-func Greet(hour24 int) string {
+func Greet(hour24 int) (string, string) {
+  var greeting string
+  var error string
   switch {
+  case hour24 < 7:
+    error = "It's too early"
   case hour24 < 12:
-    return "Good Morning"
+    greeting = "Good Morning"
   case hour24 >= 12 && hour24 <  18:
-    return "Good Afternoon"
+    greeting = "Good Afternoon"
   default://case hour24 >= 18:
-    return "Good Evening"
+    greeting = "Good Evening"
   }
+  return greeting, error
 }
 
 func main() {
   hour24 := time.Now().Hour()
-  if hour24 < 10 {
-    panic("It's too early")
+  greeting, error := Greet(hour24)
+  if len(greeting) > 0 {
+      fmt.Println(greeting)
+  } else {
+    panic(error)
   }
-  fmt.Println(Greet(hour24))
 }
