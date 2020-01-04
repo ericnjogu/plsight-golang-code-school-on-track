@@ -4,7 +4,6 @@ import (
   "fmt"
   "os"
   "strconv"
-  "log"
 )
 
 /*
@@ -12,14 +11,15 @@ import (
 */
 func Line(char string, length int) string {
   line := ""
-  for len := 0; len < length; len++ {
+  len := 0
+  for len < length  {
     line = line + char
+    len++
   }
   return line
 }
 
 func main() {
   length, _ := strconv.Atoi(os.Args[2])
-  log.Printf("%v", os.Args)
   fmt.Println(Line(os.Args[1], length))
 }
