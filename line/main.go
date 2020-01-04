@@ -12,7 +12,10 @@ import (
 func Line(char string, length int) string {
   line := ""
   len := 0
-  for len < length  {
+  for  {
+    if len > length {
+      break
+    }
     line = line + char
     len++
   }
