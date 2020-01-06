@@ -10,8 +10,8 @@ type Activity struct {
 
 func main() {
   activities := []Activity{
-    Activity{"make bed", 10},
-    Activity{"wash face", 5},
+    Activity{Name:"make bed", Interval:10},
+    Activity{Name:"wash face", Interval:5},
   }
 
   for _, activity := range activities {
