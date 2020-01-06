@@ -1,5 +1,6 @@
 package main
 
+import "log"
 /*
 "Write a function that given an array of integers, it return a map object of integers that appear multiple times
 and the number of times each appears.
@@ -20,12 +21,14 @@ func FindDuplicates(numbers []string) map[string]int{
       duplicates[number] = 1
     }
   }
-
+  var notDuplicated []string
   for countedNumber, count := range duplicates {
     if count == 1 {
       delete(duplicates, countedNumber)
+      notDuplicated = append(notDuplicated, countedNumber)
     }
   }
+  log.Printf("Numbers not duplicated %v", notDuplicated)
 
   return duplicates
 }
