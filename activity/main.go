@@ -2,27 +2,41 @@ package main
 
 import (
   "log"
-  "fmt"
+  "math/rand"
 )
+
+type Measurable interface {
+  Add(amount int)
+}
 
 type Activity struct {
   Name string
-  // in minutes
   Interval int
 }
 
-func (a Activity) ToString() string {
-  return fmt.Sprintf("%v: %vmins", a.Name, a.Interval)
+func (a *Activity) Add(increment int) {
+  a.Interval += increment
+}
+
+type Student struct {
+  Name string
+  Height int
+}
+
+func (s *Student) Add(increment int) {
+  s.Height += increment
 }
 
 func main() {
-  activities := []*Activity{
+  list := []Measurable {
     &Activity{Name:"make bed", Interval:10},
     &Activity{Name:"wash face", Interval:5},
+    &Student{"Ahadi", 100},
+    &Student{"Myles", 100},
   }
 
-  for _, activity := range activities {
-    activity.Name = fmt.Sprintf("Updated: %v", activity.Name)
-    log.Printf(activity.ToString())
+  for _, item := range list {
+    item.Add(rand.Intn(20))
+    log.Printf("%#v",item)
   }
 }
