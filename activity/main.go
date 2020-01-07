@@ -3,36 +3,15 @@ package main
 import (
   "log"
   "math/rand"
+  "github.com/kunadawa/plsight-golang-code-school/activity/model"
 )
 
-type Measurable interface {
-  Add(amount int)
-}
-
-type Activity struct {
-  Name string
-  Interval int
-}
-
-func (a *Activity) Add(increment int) {
-  a.Interval += increment
-}
-
-type Student struct {
-  Name string
-  Height int
-}
-
-func (s *Student) Add(increment int) {
-  s.Height += increment
-}
-
 func main() {
-  list := []Measurable {
-    &Activity{Name:"make bed", Interval:10},
-    &Activity{Name:"wash face", Interval:5},
-    &Student{"Ahadi", 100},
-    &Student{"Myles", 100},
+  list := []model.Measurable {
+    &model.Activity{Name:"make bed", Interval:10},
+    &model.Activity{Name:"wash face", Interval:5},
+    &model.Student{"Ahadi", 100},
+    &model.Student{"Myles", 100},
   }
 
   for _, item := range list {
