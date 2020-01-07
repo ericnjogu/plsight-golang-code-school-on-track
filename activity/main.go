@@ -1,11 +1,18 @@
 package main
 
-import "log"
+import (
+  "log"
+  "fmt"
+)
 
 type Activity struct {
   Name string
   // in minutes
   Interval int
+}
+
+func (a Activity) ToString() string {
+  return fmt.Sprintf("%v: %vmins", a.Name, a.Interval)
 }
 
 func main() {
@@ -15,6 +22,6 @@ func main() {
   }
 
   for _, activity := range activities {
-    log.Printf("%v: %vmins", activity.Name, activity.Interval)
+    log.Printf(activity.ToString())
   }
 }
